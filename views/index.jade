@@ -1,15 +1,17 @@
 extends layout
 
 block body
-  .navbar.navbar-fixed-top
+  .navbar.navbar-inverse.navbar-fixed-top
     .navbar-inner
       .container-fluid
-        a.brand(href='#') AngularExpressBootstrapSeed
+        a.brand(href='#') Tweetforce
         ul.nav
           li
             a(href='view1') View1
           li
             a(href='view2') View2                
+          li
+            a(href='about') About                
   .container-fluid      
     div(ng-controller='AppCtrl')
       .hero-unit  
