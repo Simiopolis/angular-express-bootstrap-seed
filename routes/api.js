@@ -10,4 +10,6 @@ exports.name = function (req, res) {
 };
 
 exports.tsearch = function (req, res) {
+          res.json(data);
+    });
 };

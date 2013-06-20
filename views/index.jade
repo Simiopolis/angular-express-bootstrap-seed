@@ -3,18 +3,14 @@ extends layout
 block body
   .navbar.navbar-inverse.navbar-fixed-top
     .navbar-inner
-      .container-fluid
+      .container
         a.brand(href='#') Tweetforce
         ul.nav
-          li
-            a(href='view1') View1
-          li
-            a(href='view2') View2                
           li
             a(href='about') About                
           li
             a(href='tweetsearch') Search For Tweets                
-  .container-fluid      
+  .container      
     div(ng-controller='AppCtrl')
       .hero-unit  
         h1 Tweetforce

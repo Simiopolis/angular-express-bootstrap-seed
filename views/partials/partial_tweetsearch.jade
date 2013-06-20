@@ -1,7 +1,13 @@
 block body
-    form(ng-submit="searchTwitter()").form-horizontal
-        input(type="text", ng-model="searchQuery", name="text", placeholder="twitter search term")
-        input.btn-primary(type="submit", value="Search") 
+    .container
+        form(ng-submit="searchTwitter()").form-horizontal
+            input(type="text", ng-model="searchQuery", name="text", placeholder="Twitter search term")
+            input.btn-primary(type="submit", value="Search") 
+    .container
         pre 
-            li(ng-repeat="tweet in list")
-                p {{tweet.text}}
+            table.table
+                caption 
+                    h3 Search Results
+                tbody
+                    tr(ng-repeat="tweet in list")
+                       td {{tweet.text}}
