@@ -1,0 +1,7 @@
+block body
+    form(ng-submit="searchTwitter()").form-horizontal
+        input(type="text", ng-model="searchQuery", name="text", placeholder="twitter search term")
+        input.btn-primary(type="submit", value="Search") 
+        pre 
+            li(ng-repeat="tweet in list")
+                p {{tweet.text}}
