@@ -9,6 +9,14 @@ var express = require('express'),
 
 var app = module.exports = express();
 
+var twitterAuth = require('twitter-oauth')({
+    consumerKey: "ENTER CONSUMER KEY HERE", /* per appication - create a comsumer key here: https://dev.twitter.com/apps */
+    domain: 'YOUR DOMAIN HERE',
+    consumerSecret: "ENTER CONSUMER SECRET FROM TWITTER HERE", /* create a comsumer key here: https://dev.twitter.com/apps */
+    loginCallback: "http://yourdomain.com/twitter/sessions/callback",  /* internal */
+    completeCallback:  "http://yourdomain.com/search/beagles"  /* When oauth has finished - where should we take the user too */
+});
+
 // Configuration
 
 app.configure(function(){
@@ -32,6 +40,9 @@ app.configure('production', function(){
 
 app.get('/', routes.index);
 app.get('/partial/:name', routes.partial);
+app.get('/twitter/sessions/connect', twitterAuth.oauthConnect);
+app.get('/twitter/sessions/callback', twitterAuth.oauthCallback);
+app.get('/twitter/sessions/logout', twitterAuth.logout);
 
 // JSON API
 
