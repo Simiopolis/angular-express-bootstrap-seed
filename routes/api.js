@@ -2,7 +2,6 @@
  * Serve JSON to our AngularJS client
  */
 
-
 exports.name = function (req, res) {
   res.json({
   	name: 'Bob'
@@ -10,6 +9,7 @@ exports.name = function (req, res) {
 };
 
 exports.tsearch = function (req, res) {
-          res.json(data);
-    });
+  oa.get("https://api.twitter.com/1.1/search/tweets.json?q="+req.params.term+"&count=15", access_token, access_token_secret, function (error, data) {
+    res.json(JSON.parse(data));
+  });
 };

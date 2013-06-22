@@ -9,6 +9,18 @@ var express = require('express'),
 
 var app = module.exports = express();
 
+var util = require('util');
+var OAuth = require('oauth');
+
+/** HTTP REUESTS!
+var request = require('request');
+request('http://www.google.com', function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+              console.log(body) // Print the google web page.
+                }
+})
+*/
+
 // Configuration
 
 app.configure(function(){

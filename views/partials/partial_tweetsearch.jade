@@ -9,5 +9,5 @@ block body
                 caption 
                     h3 Search Results
                 tbody
-                    tr(ng-repeat="tweet in list")
-                       td {{tweet.text}}
+                    tr(ng-repeat="status in twitterJSON.statuses")
+                       td {{status.user.screen_name}} : {{status.text}}

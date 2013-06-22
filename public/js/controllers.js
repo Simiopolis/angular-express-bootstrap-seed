@@ -11,13 +11,13 @@ function AppCtrl($scope, $http) {
     $scope.name = 'Error!'
   });
 
-  $http.get('/api/tsearch/').success(function(data, status, headers, config) {
+  $http.get('/api/tsearch/xbox').success(function(data, status, headers, config) {
     $scope.tweets = data.tweets;    
   });
 
   $scope.searchTwitter = function () {
       $http.get('/api/tsearch/' + this.searchQuery).success(function(data, status, headers, config) {
-        $scope.list = data.tweets;    
+        $scope.twitterJSON = data;
       });
   };
 }
