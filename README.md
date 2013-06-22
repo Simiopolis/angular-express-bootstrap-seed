@@ -6,7 +6,7 @@ Unstructured time project that uses Twitter for automated marketing.
 
 ## Official Website
 
-[tweetforce.org](www.tweetforce.org)
+[tweetforce.org](http://www.tweetforce.org)
 
 ## Directory Layout (From forked source)
     
