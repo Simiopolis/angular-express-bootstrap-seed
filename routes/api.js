@@ -9,7 +9,7 @@ exports.name = function (req, res) {
 };
 
 exports.tsearch = function (req, res) {
-  oa.get("https://api.twitter.com/1.1/search/tweets.json?q="+req.params.term+"&count=15", access_token, access_token_secret, function (error, data) {
+  oa.get("https://api.twitter.com/1.1/search/tweets.json?q="+req.params.term+"&count=15&geocode="+geocode, access_token, access_token_secret, function (error, data) {
     res.json(JSON.parse(data));
   });
 };

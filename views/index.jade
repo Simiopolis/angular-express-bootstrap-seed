@@ -7,19 +7,14 @@ block body
         a.brand(href='#') Tweetforce
         ul.nav
           li
-            a(href='about') About                
-          li
             a(href='tweetsearch') Search For Tweets                
   .container      
     div(ng-controller='AppCtrl')
-      .hero-unit  
-        h1 Tweetforce
-        p Unstructured Time Project 
+      .hero-unit.austin-skyline-background 
+        h1.title-padding Tweetforce
+        p Automate Your Small Business Marketing 
       div(ng-view)
     hr  
-    div
-      | Angular seed app: v
-      span(app-version)
 
   script(src='js/lib/angular/angular.js')
   script(src='js/app.js')
