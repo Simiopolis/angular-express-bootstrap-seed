@@ -20,9 +20,16 @@ html(ng-app="myApp")
                 a(href='tweetsearch') 
                     i.icon-search 
                     |  Search For Tweets 
-              -if(user)
-                li
-                    a(href="/account", target="_self") #{user.username} Dashboard
-                li
-                    a(href="/logout", target="_self") Logout
+            -if(user)
+                div.btn-group.pull-right
+                    a.btn.btn-success(href="/account", target="_self") 
+                        i.icon-dashboard
+                        |   #{user.username} Dashboard
+                    a.btn.btn-success.dropdown-toggle(data-toggle="dropdown") 
+                        span.caret
+                    ul.dropdown-menu
+                        li
+                            a(href="/logout", target="_self") 
+                                i.icon-suitcase 
+                                |   Logout
     block body
