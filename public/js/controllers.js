@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-function AppCtrl($scope, $http) {
+function AppCtrl($scope, $http, $location) {
   $http({method: 'GET', url: '/api/name'}).
   success(function(data, status, headers, config) {
     $scope.name = data.name;
@@ -16,9 +16,15 @@ function AppCtrl($scope, $http) {
   });
 
   $scope.searchTwitter = function () {
+      this.search = true;
       $http.get('/api/tsearch/' + this.searchQuery).success(function(data, status, headers, config) {
         $scope.twitterJSON = data;
+        $scope.search = false;
       });
+  };
+
+  $scope.signin = function() { 
+      location.path('/auth/tiwtter');
   };
 }
 

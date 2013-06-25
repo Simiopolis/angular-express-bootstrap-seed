@@ -19,6 +19,30 @@
           border-radius: 6px;
 }
 
+.background-black {
+    background-image: url(../../img/background.jpg)
+}
+
+.padding-twenty {
+    padding-top: 20px;
+}
+
+.color-twitter {
+  background-color: rgb(45,184,236) !important;
+}
+
+.font-white {
+  color: rgb(223,216,216) !important;
+}
+
+.font-black {
+  color: #000000 !important;
+}
+
+.background-gray {
+  background-color: rgb(223,216,216) !important;
+}
+
 .austin-skyline-background {
   background-image: url(../../img/austin_skyline_2.jpg);
   background-position: center;

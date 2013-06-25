@@ -7,5 +7,22 @@ html(ng-app="myApp")
     link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
     link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.min.css')
     link(rel='stylesheet', href='/css/app.css')
-  body
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css')
+  body.background-black.font-white
+      .navbar.navbar-inverse.navbar-fixed-top
+        .navbar-inner
+          .container
+            a.brand(href='#')
+                i.icon-twitter-sign
+                |   Tweetforce               
+            ul.nav
+              li
+                a(href='tweetsearch') 
+                    i.icon-search 
+                    |  Search For Tweets 
+              -if(user)
+                li
+                    a(href="/account", target="_self") #{user.username} Dashboard
+                li
+                    a(href="/logout", target="_self") Logout
     block body

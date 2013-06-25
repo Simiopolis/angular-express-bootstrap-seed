@@ -10,8 +10,26 @@
 //.row-fluid
 //    div.span4.pull-right
 //        img(src="img/what_is_tweetforce.png")
-.row-fluid
-    h3 What Is Tweetforce?
-    p Tweetforce allows your business  to leverage public Twitter posts in order to find potential customers in your area.
-    h3 How Does It Work?
-    p Tweetforce builds a customized profile for your business. Then, based on that profile, we search Twitter for people posting relevant tweets concerning your business. We find those people, send their tweets to you, and allow you to respond.
+div.container-fluid
+    .row-fluid
+        div.span8
+            h3 What Is Tweetforce?
+            p Tweetforce allows your business  to leverage public Twitter posts in order to find potential customers in your area.
+            h3 How Does It Work?
+            p Tweetforce builds a customized profile for your business. Then, based on that profile, we search Twitter for people posting relevant tweets concerning your business. We find those people, send their tweets to you, and allow you to respond.
+        div.span4.padding-twenty
+            form
+                div.control-group
+                    div.input-prepend.controls
+                        span.add-on
+                            i.icon-envelope.font-black
+                        input(type='text', placeholder='username')
+                div.control-group
+                    div.input-prepend.controls
+                        span.add-on
+                            i.icon-key.font-black
+                        input(type='text', placeholder='password')
+                div.control-group
+                    a.btn.btn-primary(href='/auth/twitter', target='_self')
+                        i.icon-twitter.icon-large 
+                        |  Sign in with Twitter 
