@@ -8,7 +8,9 @@ var userSchema = mongoose.Schema({
     keywords: [String],
     radius: {type: Number, default: 20},
     geocode: [Number],
-    firstTimeUser: {type: Boolean, default: true}
+    firstTimeUser: {type: Boolean, default: true},
+    token: {type: String, default: ''},
+    tokenSecret: {type: String, default: ''}
 }); 
 var User = mongoose.model('User', userSchema); 
 

@@ -37,11 +37,11 @@ passport.use(new TwitterStrategy({
     consumerSecret: "V1rQ6ol99B19cIC9m008qrl9hcCmCDoln8ivPHEj0",
     callbackURL: "http://www.tweetforce.org/auth/twitter/callback"
     },
-    function(token, tokenSecret, profile, done) {
+    function(token_, tokenSecret_, profile, done) {
         User.findOne({name: profile.username}, 'name', function (err, user){
             if (!err) {
                 if (user === null) {
-                    var new_user = new User({name: profile.username});   
+                    var new_user = new User({name: profile.username, token: token_, tokenSecret: tokenSecret_});   
                     new_user.save();
                     console.log("##################### new user created"+new_user.name);
                 } else {
@@ -95,6 +95,7 @@ app.get('/api/user/keywordbank/:industry', ensureAuthenticated, api.getKeywordBa
 app.get('/api/user/remove-keyword-bank-term/:keywordIndexToRemove', ensureAuthenticated, api.removeKeywordBankTerm);
 app.get('/api/user/add-keyword/:keywordToAdd', ensureAuthenticated, api.addUserKeyword);
 app.get('/api/user/remove-keyword/:keywordToRemove', ensureAuthenticated, api.removeKeyword);
+app.get('/api/user/tweet/:tweet', api.tweet);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

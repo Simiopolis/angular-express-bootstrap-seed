@@ -30,6 +30,18 @@ exports.tsearch = function (req, res) {
   });
 };
 
+exports.tweet = function (req, res) {
+  var token = '';
+  var tokenSecret = '';
+  User.findOne({name: req.user.username}, 'token tokenSecret', function (err, user) {
+    token = user.token;
+    tokenSecret = user.tokenSecret;    
+      oa.post("https://api.twitter.com/1.1/statuses/update.json", token, tokenSecret, {"status":req.params.tweet}, function (error, data) {
+        res.json(JSON.parse(data));
+      });
+  });
+};
+
 exports.getUserKeywords = function (req, res) {
     if (req.user == null)
         return res.json({"error": "Cannot find user. Please sign in."});

@@ -81,13 +81,16 @@ block body
                     input.btn.btn-primary(type="submit", value="Search") 
             div
                 pre.background-gray 
-                    table.table
+                    table.table.table-hover
                         caption 
                             h3 Search Results
                             i(ng-show="search").icon-spinner.icon-spin.icon-4x
                         tbody
                             tr(ng-repeat="status in twitterJSON.statuses")
                                td {{status.user.screen_name}} ({{status.created_at}}): {{status.text}}
+                                  button.btn.btn-success.pull-right(type="button")
+                                    i.icon-twitter
+                                    |   Respond
 
     script(src='js/lib/angular/angular.js')
     script(src='js/app.js')
