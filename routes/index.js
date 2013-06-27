@@ -2,6 +2,8 @@
 /*
  * GET home page.
  */
+var tfdb = require('./mongo');
+var User = tfdb.userModel;
 
 exports.index = function(req, res){
   res.render('index', { user: req.user });
@@ -13,5 +15,13 @@ exports.partial = function (req, res) {
 };
 
 exports.account = function(req, res){
-  res.render('account', { user: req.user });
+    var isNew;
+    User.findOne({name: req.user.username}, 'firstTimeUser', function(err, user) {
+        isNew = user.firstTimeUser
+        console.log(isNew);
+        res.render('account', { user: req.user, 
+                                newUser: isNew 
+                                
+                              });
+    });
 };

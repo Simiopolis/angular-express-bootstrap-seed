@@ -1,5 +1,107 @@
 extends layout
+
 block body
-  .container
-      div.hero-unit.font-black
-          h1 Welcome to your dashboard, #{user.username}!
+    div#myModal.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+        div.modal-header.font-black
+           //button.close(type="button", data-dismiss="modal", aria-hidden="true") x
+           h3#myModalLabel Welcome! 
+        div.modal-body.font-black
+           h4 Getting Started
+           p Since this is a new account, we need additional information about your business in order to optimize your experience. Please fill in the following fields so that we can better help you find customers!
+           form(id="modal-form",method="post",action="/save-info-first-time").form-horizontal
+                div.control-group
+                    label.control-label(for="inputEmail") Street Adress 
+                    div.controls
+                        input#inputEmail(type="text", name="streetAddress")
+                div.control-group
+                    label.control-label(for="inputCity") City 
+                    div.controls
+                        input(id="inputCity",type="text", name="city")
+                div.control-group
+                    label.control-label(for="inputRadius") Search Radius 
+                    div.controls
+                        input(id="inputRadius",type="text", name="radius")
+        div.modal-footer.font-black
+           button.btn.btn-primary(id="modal-submit",data-dismiss="modal", aria-hidden="true") Done
+    .container
+        div.row
+            h1 Your Dashboard
+    div.container
+        div.container-fluid.row.hero-unit.font-black
+            h3(style='text-align: center') Your Keywords
+            div.row-fluid
+                div.span6
+                    table.table.table-hover.table-condensed.table-bordered
+                        thead 
+                            tr
+                                th 
+                                th Suggested Keywords
+                        tbody
+                            tr
+                                td 1
+                                td need
+                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                        i.icon-plus-sign-alt
+                                        |   Add
+                            tr
+                                td 2
+                                td need
+                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                        i.icon-plus-sign-alt
+                                        |   Add
+                            tr
+                                td 3
+                                td need
+                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                        i.icon-plus-sign-alt
+                                        |   Add
+                div.span6
+                    table.table.table-hover.table-condensed.table-bordered
+                        thead 
+                            tr
+                                th
+                                th Keywords In Use
+                        tbody
+                            tr
+                                td 1
+                                td need
+                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                        i.icon-minus-sign-alt
+                                        |   Remove
+                            tr
+                                td 2 
+                                td need
+                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                        i.icon-minus-sign-alt
+                                        |   Remove
+                            tr
+                                td 3
+                                td need
+                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                        i.icon-minus-sign-alt
+                                        |   Remove
+    div.container
+        div(ng-controller='AccCtrl').row.container-fluid.hero-unit.font-black
+            h3(style='text-align: center') Tweet Listing Goes Here
+
+    script(src='js/lib/angular/angular.js')
+    script(src='js/app.js')
+    script(src='js/services.js')
+    script(src='js/controllers.js')
+    script(src='js/filters.js')
+    script(src='js/directives.js')
+    script(src='js/lib/jquery/jquery-1.9.1.min.js')
+    script(src='bootstrap/js/bootstrap.min.js')
+    script(type='text/javascript')
+        $(window).load(function() {
+            if(#{newUser}) {
+                $('#myModal').modal({
+                      backdrop: 'static',
+                      keyboard: false
+                })
+                $('#myModal').modal('show');
+                $("#modal-submit").click(function() {
+                    $("#modal-form").submit();
+                });
+            }
+        });

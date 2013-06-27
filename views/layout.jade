@@ -12,20 +12,20 @@ html(ng-app="myApp")
       .navbar.navbar-inverse.navbar-fixed-top
         .navbar-inner
           .container
-            a.brand(href='#')
+            a.brand(href='#', target="_self")
                 i.icon-twitter-sign
                 |   Tweetforce               
             ul.nav
-              li
-                a(href='tweetsearch') 
-                    i.icon-search 
-                    |  Search For Tweets 
+                li
+                    a(href='tweetsearch') 
+                        i.icon-search 
+                        |  Search For Tweets
             -if(user)
                 div.btn-group.pull-right
                     a.btn.btn-success(href="/account", target="_self") 
                         i.icon-dashboard
                         |   #{user.username} Dashboard
-                    a.btn.btn-success.dropdown-toggle(data-toggle="dropdown") 
+                    a.btn.btn-success.dropdown-toggle(href="#", target="_self",data-toggle="dropdown") 
                         span.caret
                     ul.dropdown-menu
                         li

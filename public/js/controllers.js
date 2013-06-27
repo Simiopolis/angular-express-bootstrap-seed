@@ -11,10 +11,6 @@ function AppCtrl($scope, $http, $location) {
     $scope.name = 'Error!'
   });
 
-  $http.get('/api/tsearch/xbox').success(function(data, status, headers, config) {
-    $scope.tweets = data.tweets;    
-  });
-
   $scope.searchTwitter = function () {
       this.search = true;
       $http.get('/api/tsearch/' + this.searchQuery).success(function(data, status, headers, config) {
@@ -22,9 +18,15 @@ function AppCtrl($scope, $http, $location) {
         $scope.search = false;
       });
   };
+}
 
-  $scope.signin = function() { 
-      location.path('/auth/tiwtter');
+function AccCtrl($scope, $http, $location) {
+  $scope.searchTwitter = function () {
+      this.search = true;
+      $http.get('/api/tsearch/' + this.searchQuery).success(function(data, status, headers, config) {
+        $scope.twitterJSON = data;
+        $scope.search = false;
+      });
   };
 }
 
