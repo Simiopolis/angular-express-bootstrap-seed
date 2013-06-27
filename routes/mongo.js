@@ -12,6 +12,11 @@ var userSchema = mongoose.Schema({
 }); 
 var User = mongoose.model('User', userSchema); 
 
+var keywordBankSchema = mongoose.Schema({
+    industry: {type: String, default: ''},
+    keywords: [String]    
+});
+var KeywordBank = mongoose.model('KeywordBank', keywordBankSchema);
+
 exports.userModel = User;
-
-
+exports.keywordBankModel = KeywordBank;

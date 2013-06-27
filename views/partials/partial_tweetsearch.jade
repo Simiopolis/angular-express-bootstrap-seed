@@ -11,4 +11,4 @@ block body
                     i(ng-show="search").icon-spinner.icon-spin.icon-4x
                 tbody
                     tr(ng-repeat="status in twitterJSON.statuses")
-                       td {{status.user.screen_name}} : {{status.text}}
+                       td {{status.user.screen_name}} ({{status.created_at}}): {{status.text}}

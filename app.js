@@ -20,6 +20,7 @@ mongoose.connect('mongodb://localhost/test');
 
 var tfdb = require('./routes/mongo');
 var User = tfdb.userModel;
+var KeywordBank = tfdb.keywordBankModel;
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -32,6 +33,9 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new TwitterStrategy({
+    consumerKey: "VD71ZdjZkG155RHEXnIA",
+    consumerSecret: "V1rQ6ol99B19cIC9m008qrl9hcCmCDoln8ivPHEj0",
+    callbackURL: "http://www.tweetforce.org/auth/twitter/callback"
     },
     function(token, tokenSecret, profile, done) {
         User.findOne({name: profile.username}, 'name', function (err, user){
@@ -87,6 +91,8 @@ app.get('/auth/twitter',passport.authenticate('twitter'));
 app.get('/api/name', api.name);
 app.get('/api/tsearch/:term', api.tsearch);
 app.get('/api/user/keywords', ensureAuthenticated, api.getUserKeywords);
+app.get('/api/user/keywordbank/:industry', ensureAuthenticated, api.getKeywordBank);
+app.get('/api/user/remove-keyword-bank-term/:keywordIndexToRemove', ensureAuthenticated, api.removeKeywordBankTerm);
 app.get('/api/user/add-keyword/:keywordToAdd', ensureAuthenticated, api.addUserKeyword);
 app.get('/api/user/remove-keyword/:keywordToRemove', ensureAuthenticated, api.removeKeyword);
 
