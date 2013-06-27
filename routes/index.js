@@ -21,7 +21,6 @@ exports.account = function(req, res){
         console.log(isNew);
         res.render('account', { user: req.user, 
                                 newUser: isNew 
-                                
                               });
     });
 };

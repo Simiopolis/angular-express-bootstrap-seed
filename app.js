@@ -32,9 +32,6 @@ passport.deserializeUser(function(obj, done) {
 });
 
 passport.use(new TwitterStrategy({
-    consumerKey: "VD71ZdjZkG155RHEXnIA",
-    consumerSecret: "V1rQ6ol99B19cIC9m008qrl9hcCmCDoln8ivPHEj0",
-    callbackURL: "http://www.tweetforce.org/auth/twitter/callback"
     },
     function(token, tokenSecret, profile, done) {
         User.findOne({name: profile.username}, 'name', function (err, user){
@@ -89,7 +86,9 @@ app.get('/auth/twitter',passport.authenticate('twitter'));
 
 app.get('/api/name', api.name);
 app.get('/api/tsearch/:term', api.tsearch);
-
+app.get('/api/user/keywords', ensureAuthenticated, api.getUserKeywords);
+app.get('/api/user/add-keyword/:keywordToAdd', ensureAuthenticated, api.addUserKeyword);
+app.get('/api/user/remove-keyword/:keywordToRemove', ensureAuthenticated, api.removeKeyword);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

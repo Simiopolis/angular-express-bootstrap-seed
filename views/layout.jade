@@ -3,7 +3,7 @@ html(ng-app="myApp")
   head
     meta(charset='utf8')
     base(href='/')
-    title Tweetforce 
+    title Tweetforce - Automate Your Small Business Marketing 
     link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
     link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.min.css')
     link(rel='stylesheet', href='/css/app.css')
@@ -22,10 +22,10 @@ html(ng-app="myApp")
                         |  Search For Tweets
             -if(user)
                 div.btn-group.pull-right
-                    a.btn.btn-success(href="/account", target="_self") 
+                    a.btn.btn-primary(href="/account", target="_self") 
                         i.icon-dashboard
                         |   #{user.username} Dashboard
-                    a.btn.btn-success.dropdown-toggle(href="#", target="_self",data-toggle="dropdown") 
+                    a.btn.btn-primary.dropdown-toggle(href="#", target="_self",data-toggle="dropdown") 
                         span.caret
                     ul.dropdown-menu
                         li

@@ -26,7 +26,7 @@ block body
     .container
         div.row
             h1 Your Dashboard
-    div.container
+    div.container(ng-controller="AccountCtrl")
         div.container-fluid.row.hero-unit.font-black
             h3(style='text-align: center') Your Keywords
             div.row-fluid
@@ -40,19 +40,19 @@ block body
                             tr
                                 td 1
                                 td need
-                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                    button.btn.btn-mini.btn-success.pull-right(type="button")
                                         i.icon-plus-sign-alt
                                         |   Add
                             tr
                                 td 2
                                 td need
-                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                    button.btn.btn-mini.btn-success.pull-right(type="button")
                                         i.icon-plus-sign-alt
                                         |   Add
                             tr
                                 td 3
                                 td need
-                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                                    button.btn.btn-mini.btn-success.pull-right(type="button")
                                         i.icon-plus-sign-alt
                                         |   Add
                 div.span6
@@ -62,26 +62,18 @@ block body
                                 th
                                 th Keywords In Use
                         tbody
-                            tr
-                                td 1
-                                td need
-                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
+                            tr(ng-repeat="keyword in keywords")
+                                td {{ $index + 1 }} 
+                                td {{ keyword }}
+                                    button.btn.btn-mini.btn-danger.pull-right(ng-click="removeKeyword($index)",type="button")
                                         i.icon-minus-sign-alt
                                         |   Remove
-                            tr
-                                td 2 
-                                td need
-                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
-                                        i.icon-minus-sign-alt
-                                        |   Remove
-                            tr
-                                td 3
-                                td need
-                                    button.btn.btn-mini.btn-danger.pull-right(type="button")
-                                        i.icon-minus-sign-alt
-                                        |   Remove
+            div
+                form(ng-submit="addUserKeyword()").form-inline
+                    input(type="text", ng-model="keywordTerm", name="keywordTerm", placeholder="Twitter search term").background-gray
+                    input.btn.btn-success(type="submit", value="Add Custom Keyword") 
     div.container
-        div(ng-controller='AccCtrl').row.container-fluid.hero-unit.font-black
+        div.row.container-fluid.hero-unit.font-black
             h3(style='text-align: center') Tweet Listing Goes Here
 
     script(src='js/lib/angular/angular.js')
