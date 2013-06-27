@@ -10,7 +10,7 @@ block body
            p Since this is a new account, we need additional information about your business in order to optimize your experience. Please fill in the following fields so that we can better help you find customers!
            form(id="modal-form",method="post",action="/save-info-first-time").form-horizontal
                 div.control-group
-                    label.control-label(for="inputEmail") Street Adress 
+                    label.control-label(for="inputEmail") Street Address 
                     div.controls
                         input#inputEmail(type="text", name="streetAddress")
                 div.control-group
@@ -23,6 +23,18 @@ block body
                         input(id="inputRadius",type="text", name="radius")
         div.modal-footer.font-black
            button.btn.btn-primary(id="modal-submit",data-dismiss="modal", aria-hidden="true") Done
+
+    div#postModal.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="postModalLabel", aria-hidden="true")
+        div.modal-header.font-black
+           //button.close(type="button", data-dismiss="modal", aria-hidden="true") x
+           h3#postModalLabel Post A Tweet 
+        div.modal-body.font-black
+           p Since this is a new account, we need additional information about your business in order to optimize your experience. Please fill in the following fields so that we can better help you find customers!
+           form(id="post-modal-form", method="post", action="/api/user/tweet").form-horizontal
+                textarea(rows="5", name="tweet" ).span9
+        div.modal-footer.font-black
+           button.btn.btn-primary(id="post-modal-submit",data-dismiss="modal", aria-hidden="true") Done
+
     .container
         div.row
             h1 Your Dashboard
@@ -88,7 +100,7 @@ block body
                         tbody
                             tr(ng-repeat="status in twitterJSON.statuses")
                                td {{status.user.screen_name}} ({{status.created_at}}): {{status.text}}
-                                  button.btn.btn-success.pull-right(type="button")
+                                  a.btn.btn-success.pull-right(role="button", href="#postModal", data-toggle="modal")
                                     i.icon-twitter
                                     |   Respond
 
@@ -112,4 +124,7 @@ block body
                     $("#modal-form").submit();
                 });
             }
+            $("#post-modal-submit").click(function() {
+                $("#post-modal-form").submit();
+            });
         });

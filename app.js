@@ -95,7 +95,11 @@ app.get('/api/user/keywordbank/:industry', ensureAuthenticated, api.getKeywordBa
 app.get('/api/user/remove-keyword-bank-term/:keywordIndexToRemove', ensureAuthenticated, api.removeKeywordBankTerm);
 app.get('/api/user/add-keyword/:keywordToAdd', ensureAuthenticated, api.addUserKeyword);
 app.get('/api/user/remove-keyword/:keywordToRemove', ensureAuthenticated, api.removeKeyword);
-app.get('/api/user/tweet/:tweet', api.tweet);
+app.get('/api/user/tweet/:tweet', ensureAuthenticated, api.tweet);
+app.post('/api/user/tweet', ensureAuthenticated, function(req, res){
+    console.log(req.body.tweet);    
+    res.redirect('/api/user/tweet/'+req.body.tweet);
+});
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

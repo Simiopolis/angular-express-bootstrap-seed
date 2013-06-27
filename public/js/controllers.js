@@ -62,6 +62,10 @@ function AccountCtrl($scope, $http, $location) {
           $scope.keywordBank = data;
           });
   };
+
+  $scope.postTweet = function () {
+    console.log(this.tweetText); 
+  };
   $scope.getKeywords();
   $scope.getKeywordBank();
 }

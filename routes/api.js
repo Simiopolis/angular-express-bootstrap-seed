@@ -37,7 +37,8 @@ exports.tweet = function (req, res) {
     token = user.token;
     tokenSecret = user.tokenSecret;    
       oa.post("https://api.twitter.com/1.1/statuses/update.json", token, tokenSecret, {"status":req.params.tweet}, function (error, data) {
-        res.json(JSON.parse(data));
+        //res.json(JSON.parse(data));
+        res.redirect('/account');
       });
   });
 };
