@@ -72,9 +72,22 @@ block body
                 form(ng-submit="addUserKeyword()").form-inline
                     input(type="text", ng-model="keywordTerm", name="keywordTerm", placeholder="Twitter search term").background-gray
                     input.btn.btn-success(type="submit", value="Add Custom Keyword") 
-    div.container
+    div.container(ng-controller="AppCtrl")
         div.row.container-fluid.hero-unit.font-black
-            h3(style='text-align: center') Tweet Listing Goes Here
+            h3(style="text-align: center") Tweet Search
+            div
+                form(ng-submit="searchTwitter()").form-inline
+                    input(type="text", ng-model="searchQuery", name="text", placeholder="Twitter search term").background-gray
+                    input.btn.btn-primary(type="submit", value="Search") 
+            div
+                pre.background-gray 
+                    table.table
+                        caption 
+                            h3 Search Results
+                            i(ng-show="search").icon-spinner.icon-spin.icon-4x
+                        tbody
+                            tr(ng-repeat="status in twitterJSON.statuses")
+                               td {{status.user.screen_name}} ({{status.created_at}}): {{status.text}}
 
     script(src='js/lib/angular/angular.js')
     script(src='js/app.js')
