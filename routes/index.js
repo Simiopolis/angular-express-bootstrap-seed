@@ -9,6 +9,10 @@ exports.index = function(req, res){
   res.render('index', { user: req.user });
 };
 
+exports.signup = function(req, res) {
+  res.render('signup-homepage');
+};
+
 exports.partial = function (req, res) {
   var name = req.params.name;
   res.render('partials/partial_' + name, { user: req.user });

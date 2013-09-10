@@ -12,13 +12,23 @@ var userSchema = mongoose.Schema({
     token: {type: String, default: ''},
     tokenSecret: {type: String, default: ''}
 }); 
-var User = mongoose.model('User', userSchema); 
+
+var signUpSchema = mongoose.Schema({
+    businessName: {type: String, default: ''},
+    emailAddress: {type: String, default: ''},
+    phoneNumber: {type: String, default: ''},
+    city: {type: String, default: ''}
+});
 
 var keywordBankSchema = mongoose.Schema({
     industry: {type: String, default: ''},
     keywords: [String]    
 });
+
+var User = mongoose.model('User', userSchema); 
+var SignUp = mongoose.model('SignUp', signUpSchema);
 var KeywordBank = mongoose.model('KeywordBank', keywordBankSchema);
 
 exports.userModel = User;
 exports.keywordBankModel = KeywordBank;
+exports.signUpModel = SignUp;

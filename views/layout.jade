@@ -8,18 +8,13 @@ html(ng-app="myApp")
     link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.min.css')
     link(rel='stylesheet', href='/css/app.css')
     link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css')
-  body.background-black.font-white
-      .navbar.navbar-inverse.navbar-fixed-top
-        .navbar-inner
+  body.background-black
+      .navbar.navbar-fixed-top
+        .navbar-inner.navbar-complete-white-bg
           .container
-            a.brand(href='#', target="_self")
-                i.icon-twitter-sign
+            a.brand(href='#', target="_self", style="max-width: 20%").font-intuit-blue
+                img(src='../../img/intuit_labs_logo.jpg', style='width: 40%')
                 |   Tweetforce               
-            ul.nav
-                li
-                    a(href='tweetsearch') 
-                        i.icon-search 
-                        |  Search For Tweets
             -if(user)
                 div.btn-group.pull-right
                     a.btn.btn-primary(href="/account", target="_self") 

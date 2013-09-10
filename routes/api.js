@@ -24,6 +24,7 @@ exports.name = function (req, res) {
 };
 
 exports.tsearch = function (req, res) {
+    console.log(req.params.term)
   var geocode = "33.021794%2C-96.766505%2C30mi";
   oa.get("https://api.twitter.com/1.1/search/tweets.json?q="+req.params.term+"&count=15&geocode="+geocode, access_token, access_token_secret, function (error, data) {
     res.json(JSON.parse(data));

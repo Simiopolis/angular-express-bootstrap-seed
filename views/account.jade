@@ -3,7 +3,6 @@ extends layout
 block body
     div#myModal.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
         div.modal-header.font-black
-           //button.close(type="button", data-dismiss="modal", aria-hidden="true") x
            h3#myModalLabel Welcome! 
         div.modal-body.font-black
            h4 Getting Started
@@ -29,9 +28,9 @@ block body
            //button.close(type="button", data-dismiss="modal", aria-hidden="true") x
            h3#postModalLabel Post A Tweet 
         div.modal-body.font-black
-           p Since this is a new account, we need additional information about your business in order to optimize your experience. Please fill in the following fields so that we can better help you find customers!
+           p Fill in the text box to post a tweet!
            form(id="post-modal-form", method="post", action="/api/user/tweet").form-horizontal
-                textarea(rows="5", name="tweet" ).span9
+                textarea(rows="5", name="tweet" ).span4
         div.modal-footer.font-black
            button.btn.btn-primary(id="post-modal-submit",data-dismiss="modal", aria-hidden="true") Done
 
@@ -84,21 +83,22 @@ block body
                 form(ng-submit="addUserKeyword()").form-inline
                     input(type="text", ng-model="keywordTerm", name="keywordTerm", placeholder="Twitter search term").background-gray
                     input.btn.btn-success(type="submit", value="Add Custom Keyword") 
-    div.container(ng-controller="AppCtrl")
+    div.container(ng-controller="AccountCtrl")
         div.row.container-fluid.hero-unit.font-black
             h3(style="text-align: center") Tweet Search
             div
                 form(ng-submit="searchTwitter()").form-inline
                     input(type="text", ng-model="searchQuery", name="text", placeholder="Twitter search term").background-gray
                     input.btn.btn-primary(type="submit", value="Search") 
+                    input.btn.btn-primary.pull-right(type="button", ng-click="searchWithKeywords()", value="Search Using Keywords") 
             div
                 pre.background-gray 
-                    table.table.table-hover
+                    table.table.table-hover(ng-repeat="keyword in twitterJSON")
                         caption 
-                            h3 Search Results
-                            i(ng-show="search").icon-spinner.icon-spin.icon-4x
+                            h3 Results For: {{ keyword.search_metadata.query }} 
+                            i(ng-show="search").icon-spinner.pull-center.icon-spin.icon-4x
                         tbody
-                            tr(ng-repeat="status in twitterJSON.statuses")
+                           tr(ng-repeat="status in keyword.statuses")
                                td {{status.user.screen_name}} ({{status.created_at}}): {{status.text}}
                                   a.btn.btn-success.pull-right(role="button", href="#postModal", data-toggle="modal")
                                     i.icon-twitter

@@ -1,0 +1,71 @@
+!!!
+html(ng-app="myApp")
+  head
+    meta(charset='utf8')
+    base(href='/')
+    title Tweetforce - Automate Your Small Business Marketing 
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href='/css/app.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css')
+  body.background-black.font-white
+      .navbar.navbar-inverse.navbar-fixed-top
+        .navbar-inner
+          .container
+            a.brand(href='#', target="_self")
+                i.icon-twitter-sign
+                |   Tweetforce               
+    div#myModal.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+        div.modal-header.font-black
+           button.close(type="button", data-dismiss="modal", aria-hidden="true") x
+           h3#myModalLabel Welcome! 
+        div.modal-body.font-black
+           h4 Sign Up Form 
+           p Please fill in the fields to sign up for Tweetforce! 
+           form(id="modal-form",method="post",action="/save-signup-info").form-horizontal
+                div.control-group
+                    label.control-label(for="inputBusinessName") Business Name 
+                    div.controls
+                        input#inputBusinessName(type="text", name="businessName")
+                div.control-group
+                    label.control-label(for="inputEmailAddress") Email Address 
+                    div.controls
+                        input(id="inputEmailAddress",type="text", name="emailAddress")
+                div.control-group
+                    label.control-label(for="inputPhoneNumber") Phone Number 
+                    div.controls
+                        input(id="inputPhoneNumber",type="text", name="phoneNumber")
+        div.modal-footer.font-black
+           button.btn.btn-primary(id="modal-submit",data-dismiss="modal", aria-hidden="true") Done
+  .container      
+    div(ng-controller='SignUpCtrl')
+      .hero-unit.austin-skyline-background 
+        h1.title-padding Tweetforce
+        p Automate Your Small Business Marketing 
+      div(ng-view)
+    hr  
+    div.container-fluid
+        .row-fluid
+            div.span9
+                h3 What Is Tweetforce?
+                p Tweetforce allows your business  to leverage public Twitter posts in order to find potential customers in your area.
+                h3 How Does It Work?
+                p Tweetforce builds a customized profile for your business. Then, based on that profile, we search Twitter for people posting relevant tweets concerning your business. We find those people, send their tweets to you, and allow you to respond.
+            div.span3.padding-twenty
+                p Get started by signing up! 
+                a.btn.btn-success.btn-large.btn-block(role="button", href="#myModal", data-toggle="modal")
+                    |  Sign Up 
+    script(src='js/lib/angular/angular.js')
+    script(src='js/app.js')
+    script(src='js/services.js')
+    script(src='js/controllers.js')
+    script(src='js/filters.js')
+    script(src='js/directives.js')
+    script(src='js/lib/jquery/jquery-1.9.1.min.js')
+    script(src='bootstrap/js/bootstrap.min.js')
+    script(type='text/javascript')
+        $(window).load(function() {
+            $("#post-modal-submit").click(function() {
+                $("#modal-form").submit();
+            });
+        });

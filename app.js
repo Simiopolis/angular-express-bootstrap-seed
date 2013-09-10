@@ -21,6 +21,7 @@ mongoose.connect('mongodb://localhost/test');
 var tfdb = require('./routes/mongo');
 var User = tfdb.userModel;
 var KeywordBank = tfdb.keywordBankModel;
+var SignUp = tfdb.signUpModel;
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -117,6 +118,19 @@ app.post('/save-info-first-time', function(req, res) {
     });
 
     res.redirect('/account');
+});
+
+app.post('/save-signup-info', function(req, res) {
+    var signUpEntry = new SignUp({businessName: req.body.businessName, emailAddress: req.body.emailAddress, phoneNumber: req.body.phoneNumber, city: req.body.city});
+    signUpEntry.save();
+
+    res.redirect('/');
+});
+app.post('/save-signup-info2', function(req, res) {
+    var signUpEntry = new SignUp({businessName: req.body.businessName, emailAddress: req.body.emailAddress, phoneNumber: req.body.phoneNumber, city: req.body.city});
+    signUpEntry.save();
+
+    res.redirect('/thankyou');
 });
 
 // Start server

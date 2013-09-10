@@ -23,6 +23,10 @@
     background-image: url(../../img/background.jpg)
 }
 
+.navbar-complete-white-bg {
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff) !important;
+}
+
 .padding-twenty {
     padding-top: 20px;
 }
@@ -33,6 +37,10 @@
 
 .font-white {
   color: rgb(223,216,216) !important;
+}
+
+.font-intuit-blue {
+  color: rgb(78, 133, 197) !important;
 }
 
 .font-black {

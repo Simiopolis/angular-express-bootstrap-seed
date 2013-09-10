@@ -2,12 +2,69 @@ extends layout
 
 block body
   .container      
+    div#myModal.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel", aria-hidden="true")
+        div.modal-header.font-black
+           button.close(type="button", data-dismiss="modal", aria-hidden="true") x
+           h3#myModalLabel Welcome! 
+        div.modal-body.font-black
+           h4 Sign Up Form 
+           p Please fill in the fields to sign up for Tweetforce! 
+           form(id="modal-form",method="post",action="/save-signup-info").form-horizontal
+                div.control-group
+                    label.control-label(for="inputBusinessName") Business Name (Required) 
+                    div.controls
+                        input#inputBusinessName(type="text", name="businessName", placeholder="Some Business")
+                div.control-group
+                    label.control-label(for="inputEmailAddress") Email Address (Required) 
+                    div.controls
+                        input(id="inputEmailAddress",type="email", name="emailAddress", placeholder="test@example.com", required)
+                div.control-group
+                    label.control-label(for="inputPhoneNumber") Phone Number 
+                    div.controls
+                        input(id="inputPhoneNumber",type="text", name="phoneNumber", placeholder="1234567890")
+                div.control-group
+                    label.control-label(for="inputCity") City 
+                    div.controls
+                        input(id="inputCity",type="text", name="city", placeholder="Plano")
+        div.modal-footer.font-black
+           button.btn.btn-primary(id="modal-submit",data-dismiss="modal", aria-hidden="true") Done
+
+    div#myModal2.modal.hide.fade(tabindex="-1", role="dialog", aria-labelledby="myModalLabel2", aria-hidden="true")
+        div.modal-header.font-black
+           button.close(type="button", data-dismiss="modal", aria-hidden="true") x
+           h3#myModalLabel2 Welcome! 
+        div.modal-body.font-black
+           h4 Sign Up Form 
+           p Please fill in the fields to sign up for Tweetforce! 
+           form(id="modal-form2",method="post",action="/save-signup-info2").form-horizontal
+                div.control-group
+                    label.control-label(for="inputBusinessName") Business Name (Required) 
+                    div.controls
+                        input#inputBusinessName(type="text", name="businessName", placeholder="Some Business")
+                div.control-group
+                    label.control-label(for="inputEmailAddress") Email Address (Required) 
+                    div.controls
+                        input(id="inputEmailAddress",type="email", name="emailAddress", placeholder="test@example.com", required)
+                div.control-group
+                    label.control-label(for="inputPhoneNumber") Phone Number 
+                    div.controls
+                        input(id="inputPhoneNumber",type="text", name="phoneNumber", placeholder="1234567890")
+                div.control-group
+                    label.control-label(for="inputCity") City 
+                    div.controls
+                        input(id="inputCity",type="text", name="city", placeholder="Plano")
+        div.modal-footer.font-black
+           button.btn.btn-primary(id="modal-submit2",data-dismiss="modal", aria-hidden="true") Done
+
     div(ng-controller='AppCtrl')
       .hero-unit.austin-skyline-background 
         h1.title-padding Tweetforce
         p Automate Your Small Business Marketing 
       div(ng-view)
     hr  
+    a.pull-right(href="https://security.intuit.com/privacy/", target="_self") Privacy Policy
+    br
+    br
 
   script(src='js/lib/angular/angular.js')
   script(src='js/app.js')
@@ -17,3 +74,19 @@ block body
   script(src='js/directives.js')
   script(src='js/lib/jquery/jquery-1.9.1.min.js')
   script(src='bootstrap/js/bootstrap.min.js')
+  script(type='text/javascript')
+    $(window).load(function() {
+        $("#modal-submit").click(function() {
+            $("#modal-form").submit();
+        });
+        $("#modal-submit2").click(function() {
+            $("#modal-form2").submit();
+        });
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-42320095-1', 'tweetforce.org');
+        ga('send', 'pageview');
+    });
+
